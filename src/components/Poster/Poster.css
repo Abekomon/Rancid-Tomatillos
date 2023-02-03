@@ -1,11 +1,10 @@
 .poster {
-  width: 275px;
-  
+  width: 90%;
+  height: 20%;
 }
 
 .poster img {
   width: 100%;
-  height: 400px;
 }
 
 .poster footer {
