@@ -2,14 +2,21 @@ import React, { Component } from 'react'
 import Poster from '../Poster/Poster'
 import './PosterGrid.css'
 
-class PosterGrid extends Component {
-  constructor(props) {
-    super(props)
-  }
-  render() {
-
-  }
+const PosterGrid = (props) => {
+  const moviePosters = props.movies.map(movie => {
+    return (
+      <Poster 
+        title={movie.title} 
+        poster={movie.poster_path} 
+        rating={movie.average_rating} 
+      />
+    )
+  })
+  return (
+    <> 
+      {moviePosters}
+    </>
+  )
 }
-
 
 export default PosterGrid
