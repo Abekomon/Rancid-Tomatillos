@@ -1,0 +1,7 @@
+.posterGrid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 3px;
+  justify-items: center;
+  padding: 3%
+}

@@ -13,9 +13,9 @@ const PosterGrid = (props) => {
     )
   })
   return (
-    <> 
+    <div className='posterGrid'> 
       {moviePosters}
-    </>
+    </div>
   )
 }
 
