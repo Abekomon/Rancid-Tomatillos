@@ -1,11 +1,18 @@
 .header {
   height: 120px;
   width: 100%;
-  background-color: aqua;
+  background-color: rgb(230, 57, 70);
+  color: rgb(241, 250, 238);
   text-align: center;
-  padding: 5% 0% 0% 0%;
+  padding: 3% 0% 3% 0%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .header h1 {
   margin: 0;
+  font-size: 3em;
+  width: 90%;
+  border-radius: 10px;
 }
