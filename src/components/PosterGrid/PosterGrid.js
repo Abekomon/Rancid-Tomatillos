@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Poster from '../Poster/Poster'
+import Movie from '../Movie/Movie'
 import './PosterGrid.css'
 
 class PosterGrid extends Component {
@@ -7,6 +8,13 @@ class PosterGrid extends Component {
     super(props);
     this.state = {
       mainView: true,
+      currentId: null,
+    }
+  }
+
+  handleChange = (id) => {
+    if(id) {
+      this.setState({ currentId: id, mainView: false })
     }
   }
 
@@ -25,12 +33,14 @@ class PosterGrid extends Component {
     
     return (
       <> 
-        {this.state.mainView && <div className='posterGrid'> 
+        {this.state.mainView && <div className='posterGrid' onClick={(e) => this.handleChange(e.target.id)}> 
           {moviePosters}
         </div>}
 
         {!this.state.mainView && <div>
-          <h2>Hello!</h2>
+          <Movie 
+            id={this.state.id}
+          />
         </div>}
       </>
     )

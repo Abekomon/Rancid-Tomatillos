@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  margin: 0 auto;
+  width: 90%;
+  height: 75vh;
+  justify-content: space-around;
+}
+
+.container img {
+  width: 28%;
+  height: 85%;
+}
+
+.info {
+  width: 40%;
+}
