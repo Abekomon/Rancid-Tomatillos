@@ -12,7 +12,7 @@ const Movie = () => {
   
   return(
     <div className='container'>
-      <button>Back to home</button>
+      
       <img src={movieData.singleMovie.poster_path} alt={movieData.singleMovie.title}/>
       
       <section className='info'>
@@ -24,6 +24,7 @@ const Movie = () => {
         <p className='money'>Revenue: {movieData.singleMovie.revenue}</p>
         <p className='runtime'>Runtime: {movieData.singleMovie.runtime}</p>
         {genres}
+        <button>Back to home</button>
       </section>
     </div>
   )
