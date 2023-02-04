@@ -3,10 +3,10 @@ import './Movie.css'
 import movieData from '../../movieData'
 
 
-const Movie = () => {
+const Movie = (props) => {
   const genres = movieData.singleMovie.genres.map(genre => {
     return (
-      <p className='genre'>{genre}</p>
+      <p className='genre' key={genre}>{genre}</p>
     )
   })
   
@@ -24,10 +24,12 @@ const Movie = () => {
           <p className='money'>Budget: {movieData.singleMovie.budget}</p>
           <p className='money'>Revenue: {movieData.singleMovie.revenue}</p>
           <p className='runtime'>Runtime: {movieData.singleMovie.runtime}</p>
-          {genres}
+          <div className='genreBox'>
+            {genres}
+          </div>
         </section>
       </div>
-      <button>HOME</button>
+      <button onClick={() => props.backToHome()}>HOME</button>
     </div>
   )
 }

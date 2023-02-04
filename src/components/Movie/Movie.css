@@ -37,16 +37,17 @@
   box-shadow: 7px 7px 15px rgb(29, 53, 87);
 }
 
-.container h2 {
-  font-size: 3em;
-}
-
 h2, p {
   margin: 0;
 }
 
 .info h2 {
+  font-size: 3em;
   padding-top: 5%;
+}
+
+.info h3 {
+  margin-top: 0;
 }
 
 button {
@@ -61,4 +62,17 @@ button:hover {
   background-color:#457B9D;
   transition: 0.2s;
   color: rgb(241, 250, 238);
+}
+
+.genreBox {
+  display: flex;
+  flex-direction: row;
+  gap: 2%;
+}
+
+.genre {
+  padding: 3px;
+  background-color: white;
+  color:rgb(29, 53, 87);
+  border-radius: 5px;
 }
