@@ -24,7 +24,9 @@ const Movie = (props) => {
           <p className='money'>Budget: {movieData.singleMovie.budget}</p>
           <p className='money'>Revenue: {movieData.singleMovie.revenue}</p>
           <p className='runtime'>Runtime: {movieData.singleMovie.runtime}</p>
-          {genres}
+          <div className='genreBox'>
+            {genres}
+          </div>
         </section>
       </div>
       <button onClick={() => props.backToHome()}>HOME</button>
