@@ -27,7 +27,7 @@ const Movie = () => {
           {genres}
         </section>
       </div>
-      <button>Back to home</button>
+      <button>HOME</button>
     </div>
   )
 }
