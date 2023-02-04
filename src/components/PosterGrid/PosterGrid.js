@@ -18,6 +18,10 @@ class PosterGrid extends Component {
     }
   }
 
+  backToHome = () => {
+    this.setState({ mainView: true, currentId: null })
+  }
+
   render() {
     const moviePosters = this.props.movies.map(movie => {
       return (
@@ -40,6 +44,7 @@ class PosterGrid extends Component {
         {!this.state.mainView && <div>
           <Movie 
             id={this.state.id}
+            backToHome={this.backToHome}
           />
         </div>}
       </>
