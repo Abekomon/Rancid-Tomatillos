@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Header from '../Header/Header'
-import movieData from '../../movieData'
+import fetchData from '../../apiCalls'
 import './App.css'
 import PosterGrid from '../PosterGrid/PosterGrid'
 
@@ -8,15 +8,23 @@ class App extends Component {
   constructor() {
     super() 
     this.state = {
-      movieData: movieData.movies
+      isLoading: true,
+      movieData: null,
     }
+  }
+
+  componentDidMount() {
+    fetchData().then(data => {
+      this.setState({ movieData: data.movies, isLoading: false })
+    })
   }
 
   render() {
     return (
       <main>
         <Header />
-        <PosterGrid movies={this.state.movieData}/>
+        {this.state.isLoading && <h3 className='loading'>Loading...</h3>}
+        {!this.state.isLoading && <PosterGrid movies={this.state.movieData}/>}
       </main>
     )
   }
