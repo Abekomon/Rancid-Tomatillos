@@ -1,6 +1,5 @@
 import React from 'react'
 import './Movie.css'
-import movieData from '../../movieData'
 
 
 const Movie = (props) => {
