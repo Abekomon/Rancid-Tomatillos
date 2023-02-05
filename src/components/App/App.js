@@ -14,7 +14,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetchData().then(data => {
+    fetchData('movies').then(data => {
       this.setState({ movieData: data.movies, isLoading: false })
     })
   }

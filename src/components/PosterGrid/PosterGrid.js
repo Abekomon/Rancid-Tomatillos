@@ -2,24 +2,28 @@ import React, { Component } from 'react'
 import Poster from '../Poster/Poster'
 import Movie from '../Movie/Movie'
 import './PosterGrid.css'
+import fetchData from '../../apiCalls'
 
 class PosterGrid extends Component {
   constructor(props) {
     super(props);
     this.state = {
       mainView: true,
-      currentId: null,
+      movieData: null,
+      isLoading: true
     }
   }
 
   handleChange = (id) => {
     if(id) {
-      this.setState({ currentId: id, mainView: false })
+      this.setState({ mainView: false })
+      fetchData(`movies/${id}`)
+      .then(data => this.setState({ movieData: data.movie, isLoading: false }))
     }
   }
 
   backToHome = () => {
-    this.setState({ mainView: true, currentId: null })
+    this.setState({ mainView: true, movieData: null, isLoading: true })
   }
 
   render() {
@@ -41,11 +45,14 @@ class PosterGrid extends Component {
           {moviePosters}
         </div>}
 
-        {!this.state.mainView && <div>
+        {!this.state.mainView && 
+        <div>
+          { !this.state.isLoading &&
           <Movie 
-            id={this.state.id}
-            backToHome={this.backToHome}
+            movieData={this.state.movieData}
+            backToHome={ this.backToHome }
           />
+          }
         </div>}
       </>
     )
