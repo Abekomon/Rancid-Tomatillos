@@ -1,6 +1,7 @@
 describe('Dashboard flows', () => {
   beforeEach(() => {
     cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', { fixture: 'movies.json' })
+    cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/436270', { fixture: 'black-adam.json' })
     cy.visit('http://localhost:3000/')
   })
   
@@ -17,8 +18,6 @@ describe('Dashboard flows', () => {
   })
 
   it('Should change views when clicking on a movie, and show additional details', () => {
-    cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/436270', { fixture: 'black-adam.json' })
-    
     cy.get('.poster:nth-child(1) > img').click()
     cy.get('.container > img').should('be.visible')
     cy.get('.info').should('be.visible')
