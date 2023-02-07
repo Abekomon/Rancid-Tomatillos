@@ -47,7 +47,7 @@ class PosterGrid extends Component {
 
         {!this.state.mainView && 
         <div>
-          { this.state.isLoading && <h3>Loading...</h3> }
+          { this.state.isLoading && <div class="loader"></div> }
           { !this.state.isLoading &&
           <Movie 
             movieData={this.state.movieData}
