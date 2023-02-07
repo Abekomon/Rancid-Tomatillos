@@ -4,9 +4,9 @@ import './Poster.css';
 const Poster = ({id, title, poster, rating}) => {
   return (
     <div className='poster'>
-      <img src={poster} alt={title} id={id}/>
+      <img src={poster} alt={title}/>
       <footer>
-        <h3 id={id}>{title}</h3>
+        <h3>{title}</h3>
         <p>Rating: {rating.toFixed(1)}</p>
       </footer>
     </div>

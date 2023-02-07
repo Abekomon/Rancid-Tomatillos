@@ -3,6 +3,7 @@ import Header from '../Header/Header'
 import fetchData from '../../apiCalls'
 import './App.css'
 import PosterGrid from '../PosterGrid/PosterGrid'
+import Movie from '../Movie/Movie'
 import { Route } from 'react-router-dom'
 
 class App extends Component {
@@ -24,7 +25,10 @@ class App extends Component {
     return (
       <main>
         <Header />
-        <Route path='/' render={ () => this.state.isLoading ? <div class="loader"></div> : <PosterGrid movies={this.state.movieData}/> } />
+        <Route exact path='/' render={ () => this.state.isLoading ? <div className="loader"></div> : <PosterGrid movies={this.state.movieData}/> } />
+        
+        <Route path="/:movieID" render={({match}) => <Movie movieID={match.params.movieID}/>
+        }  />
       </main>
     )
   }

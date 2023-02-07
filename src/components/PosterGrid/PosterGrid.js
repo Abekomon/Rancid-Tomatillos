@@ -3,6 +3,7 @@ import Poster from '../Poster/Poster'
 import Movie from '../Movie/Movie'
 import './PosterGrid.css'
 import fetchData from '../../apiCalls'
+import { Route, Link } from 'react-router-dom'
 
 class PosterGrid extends Component {
   constructor(props) {
@@ -14,13 +15,13 @@ class PosterGrid extends Component {
     }
   }
 
-  handleChange = (id) => {
-    if(id) {
-      this.setState({ mainView: false })
-      fetchData(`movies/${id}`)
-      .then(data => this.setState({ movieData: data.movie, isLoading: false }))
-    }
-  }
+  // handleChange = (id) => {
+  //   if(id) {
+  //     this.setState({ mainView: false })
+  //     fetchData(`movies/${id}`)
+  //     .then(data => this.setState({ movieData: data.movie, isLoading: false }))
+  //   }
+  // }
 
   backToHome = () => {
     this.setState({ mainView: true, movieData: null, isLoading: true })
@@ -29,32 +30,23 @@ class PosterGrid extends Component {
   render() {
     const moviePosters = this.props.movies.map(movie => {
       return (
-        <Poster 
-          key={movie.id}
-          id={movie.id}
-          title={movie.title} 
-          poster={movie.poster_path} 
-          rating={movie.average_rating} 
-        />
+        <Link to={`/${movie.id}`}>
+          <Poster 
+            key={movie.id}
+            id={movie.id}
+            title={movie.title} 
+            poster={movie.poster_path} 
+            rating={movie.average_rating} 
+          />
+        </Link>
       )
     })
     
     return (
       <> 
-        {this.state.mainView && <div className='posterGrid' onClick={(e) => this.handleChange(e.target.id)}> 
+        <div className='posterGrid'> 
           {moviePosters}
-        </div>}
-
-        {!this.state.mainView && 
-        <div>
-          { this.state.isLoading && <div class="loader"></div> }
-          { !this.state.isLoading &&
-          <Movie 
-            movieData={this.state.movieData}
-            backToHome={ this.backToHome }
-          />
-          }
-        </div>}
+        </div>
       </>
     )
   }
