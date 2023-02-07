@@ -23,7 +23,7 @@ class App extends Component {
     return (
       <main>
         <Header />
-        {this.state.isLoading && <h3 className='loading'>Loading...</h3>}
+        {this.state.isLoading && <div class="loader"></div>}
         {!this.state.isLoading && <PosterGrid movies={this.state.movieData}/>}
       </main>
     )
