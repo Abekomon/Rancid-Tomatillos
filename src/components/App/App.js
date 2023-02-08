@@ -25,9 +25,12 @@ class App extends Component {
     return (
       <main>
         <Header />
-        <Route exact path='/' render={ () => this.state.isLoading ? <div className="loader"></div> : <PosterGrid movies={this.state.movieData}/> } />
+
+        <Route exact path='/' render={ () => 
+          this.state.isLoading ? <div className="loader"></div> : <PosterGrid movies={this.state.movieData}/> } />
         
         <Route path="/:movieID" render={({match}) => <Movie movieID={match.params.movieID}/>
+        
         }  />
       </main>
     )
