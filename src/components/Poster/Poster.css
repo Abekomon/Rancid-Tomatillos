@@ -12,10 +12,15 @@
 
 .poster footer {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   padding-top: 3%;
 }
 
-.poster h3, .poster p {
+a{
+  text-decoration: none;
+}
+
+.poster h3 {
   margin: 0;
+  text-align: center;
 }

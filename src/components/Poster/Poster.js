@@ -7,7 +7,7 @@ const Poster = ({id, title, poster, rating}) => {
       <img src={poster} alt={title}/>
       <footer>
         <h3>{title}</h3>
-        <p>Rating: {rating.toFixed(1)}</p>
+        {/* <p>Rating: {rating.toFixed(1)}</p> */}
       </footer>
     </div>
   )
