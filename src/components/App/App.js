@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Header from '../Header/Header'
-import fetchData from '../../apiCalls'
+import fetchMovieData from '../../apiCalls'
 import './App.css'
 import PosterGrid from '../PosterGrid/PosterGrid'
 import Movie from '../Movie/Movie'
@@ -12,13 +12,13 @@ class App extends Component {
     super() 
     this.state = {
       isLoading: true,
-      movieData: null,
-      response: null
+      movieData: [],
+      response: false
     }
   }
 
   componentDidMount() {
-    fetchData('movies').then(data => {
+    fetchMovieData('movies').then(data => {
       this.setState({ movieData: data.movies, isLoading: false, response: true })
     }).catch(() => {this.setState({response: false, isLoading: false})})
   }
@@ -29,19 +29,21 @@ class App extends Component {
         <Header />
 
         <Route exact path="/error/404" render={ () => 
-          <Errors />
-        } />
+            <Errors /> 
+          } 
+        />
 
         <Route exact path='/' render={ () => 
-          this.state.isLoading ? <div className="loader"></div> : 
-          !this.state.response ? <Redirect to="/error/404" /> :
-          <PosterGrid movies={this.state.movieData}/> } 
-          />
-
+            this.state.isLoading ? <div className="loader"></div> : 
+            !this.state.response ? <Redirect to="/error/404" /> :
+            <PosterGrid movies={this.state.movieData}/> 
+          } 
+        />
         
-        <Route exact path="/:movieID" render={({match}) => <Movie movieID={match.params.movieID}/>
-        
-        }  />
+        <Route exact path="/:movieID" render={({match}) => 
+            <Movie movieID={match.params.movieID}/> 
+          }
+        />
       </main>
     )
   }

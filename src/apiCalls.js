@@ -1,6 +1,4 @@
-import { Redirect } from "react-router-dom";
-
-export default function fetchData(path) {
+export default function fetchMovieData(path) {
     return fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/${path}`).then(response => {
     if (response.ok) {
       return response.json()
