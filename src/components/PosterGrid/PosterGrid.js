@@ -16,7 +16,7 @@ class PosterGrid extends Component {
   render() {
     const moviePosters = this.props.movies.map(movie => {
       return (
-        <Link key={movie.id} to={`/${movie.id}`}>
+        <Link key={movie.id} to={`/${movie.id}`} data-cy={movie.id}>
           <Poster 
             id={movie.id}
             title={movie.title} 

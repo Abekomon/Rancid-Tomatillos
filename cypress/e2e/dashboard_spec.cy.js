@@ -11,10 +11,11 @@ describe('Dashboard flows', () => {
   })
 
   it('Should display movies on page load', () => {
-    cy.get('.poster').should('be.visible')
-    cy.get('h3').contains('Black Adam')
-    cy.get('h3').contains('The Woman King')
-    // cy.get('p').contains('Rating: 4.0')
+    // cy.get('.poster').should('be.visible')
+    cy.get('[data-cy="436270"]').should('be.visible')
+    cy.get('[data-cy="724495"]').should('be.visible')
+    cy.get('[data-cy="436270"]').contains('Black Adam')
+    cy.get('[data-cy="724495"]').contains('The Woman King')
   })
 
   it('Should change views when clicking on a movie, and show additional details', () => {
