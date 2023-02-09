@@ -13,14 +13,15 @@ class App extends Component {
     this.state = {
       isLoading: true,
       movieData: null,
-      response: null
+      response: null,
+      statusCode: 200
     }
   }
 
   componentDidMount() {
     fetchData('movies').then(data => {
       this.setState({ movieData: data.movies, isLoading: false, response: true })
-    }).catch(() => {this.setState({response: false, isLoading: false})})
+    }).catch((error) => {this.setState({response: false, isLoading: false, statusCode: error.message})})
   }
 
   render() {
@@ -28,13 +29,13 @@ class App extends Component {
       <main>
         <Header />
 
-        <Route exact path="/error/404" render={ () => 
-          <Errors />
+        <Route exact path="/error/:code" render={ ({match}) => 
+          <Errors statusCode={match.params.code}/>
         } />
 
         <Route exact path='/' render={ () => 
           this.state.isLoading ? <div className="loader"></div> : 
-          !this.state.response ? <Redirect to="/error/404" /> :
+          !this.state.response ? <Redirect to={`${this.state.statusCode}`} /> :
           <PosterGrid movies={this.state.movieData}/> } 
           />
 

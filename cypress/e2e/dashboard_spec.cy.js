@@ -11,7 +11,6 @@ describe('Dashboard flows', () => {
   })
 
   it('Should display movies on page load', () => {
-    // cy.get('.poster').should('be.visible')
     cy.get('[data-cy="436270"]').should('be.visible')
     cy.get('[data-cy="724495"]').should('be.visible')
     cy.get('[data-cy="436270"]').contains('Black Adam')
@@ -23,4 +22,16 @@ describe('Dashboard flows', () => {
     cy.get('.container > img').should('be.visible')
     cy.get('.info').should('be.visible')
   })
+})
+
+it('User should see an error page if server is not working', () => {
+  cy.visit('http://localhost:3000/')
+  cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', { statusCode: 500 })
+  cy.get('[data-cy="error"]').should('be.visible')
+})
+
+it('User should see an error page if server is not working', () => {
+  cy.visit('http://localhost:3000/')
+  cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', { statusCode: 404 })
+  cy.get('[data-cy="error"]').should('be.visible')
 })
