@@ -3,7 +3,7 @@ import './Errors.css'
 
 const Errors = () => {
   return (
-    <h3>Something is whack with our server. Come back later.</h3>
+    <h3 className="error-message">Something is whack with our server. Come back later.</h3>
   )
 }
 
