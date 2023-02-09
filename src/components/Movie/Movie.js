@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link, Redirect } from 'react-router-dom'
-import fetchData from '../../apiCalls'
+import fetchMovieData from '../../apiCalls'
 import './Movie.css'
 
 class Movie extends Component {
@@ -14,7 +14,7 @@ class Movie extends Component {
   }
 
   componentDidMount() {
-    fetchData(`movies/${this.props.movieID}`)
+    fetchMovieData(`movies/${this.props.movieID}`)
     .then(data => {
       this.setState({movieData: data.movie, isLoading: false, response: true})
     }).catch(() => {this.setState({response: false, isLoading: false})})

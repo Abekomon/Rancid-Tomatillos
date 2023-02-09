@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Header from '../Header/Header'
-import fetchData from '../../apiCalls'
+import fetchMovieData from '../../apiCalls'
 import './App.css'
 import PosterGrid from '../PosterGrid/PosterGrid'
 import Movie from '../Movie/Movie'
@@ -18,7 +18,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetchData('movies').then(data => {
+    fetchMovieData('movies').then(data => {
       this.setState({ movieData: data.movies, isLoading: false, response: true })
     }).catch(() => {this.setState({response: false, isLoading: false})})
   }
