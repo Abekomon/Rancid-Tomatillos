@@ -7,9 +7,9 @@ class Movie extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      movieData: null,
+      movieData: {},
       isLoading: true,
-      response: null
+      response: false
     }
   }
 

@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 import Poster from '../Poster/Poster'
 import './PosterGrid.css'
-import { Route, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 class PosterGrid extends Component {
   constructor(props) {
     super(props);
     this.state = {
       mainView: true,
-      movieData: null,
       isLoading: true
     }
   }
