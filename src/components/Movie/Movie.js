@@ -47,7 +47,7 @@ class Movie extends Component {
             </section>
           </div>
           <Link to="/">
-            <button className="home-button">HOME</button>
+            <button className="home-button" data-cy="home">HOME</button>
           </Link>
         </div>
       )

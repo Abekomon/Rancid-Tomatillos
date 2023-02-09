@@ -3,11 +3,10 @@ import './Poster.css';
 
 const Poster = ({id, title, poster, rating}) => {
   return (
-    <div className='poster'>
+    <div className='poster' id={id} data-cy={id}>
       <img src={poster} alt={title}/>
       <footer>
         <h3>{title}</h3>
-        {/* <p>Rating: {rating.toFixed(1)}</p> */}
       </footer>
     </div>
   )
