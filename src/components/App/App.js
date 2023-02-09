@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Header from '../Header/Header'
-import fetchData from '../../apiCalls'
+import fetchMovieData from '../../apiCalls'
 import './App.css'
 import PosterGrid from '../PosterGrid/PosterGrid'
 import Movie from '../Movie/Movie'
@@ -12,14 +12,14 @@ class App extends Component {
     super() 
     this.state = {
       isLoading: true,
-      movieData: null,
-      response: null,
+      movieData: [],
+      response: false,
       statusCode: 200
     }
   }
 
   componentDidMount() {
-    fetchData('movies').then(data => {
+    fetchMovieData('movies').then(data => {
       this.setState({ movieData: data.movies, isLoading: false, response: true })
     }).catch((error) => {this.setState({response: false, isLoading: false, statusCode: error.message})})
   }
@@ -40,9 +40,10 @@ class App extends Component {
           />
 
         
-        <Route exact path="/:movieID" render={({match}) => <Movie movieID={match.params.movieID}/>
-        
-        }  />
+        <Route exact path="/:movieID" render={({match}) => 
+            <Movie movieID={match.params.movieID}/> 
+          }
+        />
       </main>
     )
   }
