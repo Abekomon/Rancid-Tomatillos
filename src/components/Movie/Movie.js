@@ -9,7 +9,8 @@ class Movie extends Component {
     this.state = {
       movieData: null,
       isLoading: true,
-      response: null
+      response: null,
+      statusCode: 200
     }
   }
 
@@ -17,7 +18,7 @@ class Movie extends Component {
     fetchData(`movies/${this.props.movieID}`)
     .then(data => {
       this.setState({movieData: data.movie, isLoading: false, response: true})
-    }).catch(() => {this.setState({response: false, isLoading: false})})
+    }).catch((error) => {this.setState({response: false, isLoading: false, statusCode: error.message})})
   }
 
   render() {
@@ -25,7 +26,7 @@ class Movie extends Component {
     if(this.state.isLoading){
       return <div className="loader"></div>
     } else if (!this.state.response) {
-      return <Redirect to="/error/404"/>
+      return <Redirect to={`/error/${this.state.statusCode}`}/>
     } else {
       const genres = movieData.genres.map(genre => {
         return (

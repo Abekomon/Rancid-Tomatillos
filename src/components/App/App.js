@@ -35,7 +35,7 @@ class App extends Component {
 
         <Route exact path='/' render={ () => 
           this.state.isLoading ? <div className="loader"></div> : 
-          !this.state.response ? <Redirect to={`${this.state.statusCode}`} /> :
+          !this.state.response ? <Redirect to={`/error/${this.state.statusCode}`} /> :
           <PosterGrid movies={this.state.movieData}/> } 
           />
 
