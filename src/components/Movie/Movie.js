@@ -21,13 +21,13 @@ class Movie extends Component {
   }
 
   render() {
-    const movieData = this.state.movieData
     if(this.state.isLoading){
       return <div className="loader"></div>
     } else if (!this.state.response) {
       return <Redirect to="/error/404"/>
     } else {
-      const genres = movieData.genres.map(genre => {
+      const { title, poster_path, release_date, overview, genres, budget, revenue, runtime, tagline } = this.state.movieData
+      const genreList = genres.map(genre => {
         return (
           <p className='genre' key={genre}>{genre}</p>
         )
@@ -36,18 +36,18 @@ class Movie extends Component {
         <div className='main-container'>
           <div className='container'>
             
-            <img src={movieData.poster_path} alt={movieData.title}/>
+            <img src={poster_path} alt={title}/>
             
             <section className='info'>
-              <h2>{movieData.title}</h2>
-              <h3 className='tagline'>{movieData.tagline}</h3>
-              <p className='overview'>{movieData.overview}</p>
-              <p className='release'>Released {movieData.release_date}</p>
-              <p className='money'>Budget: {movieData.budget}</p>
-              <p className='money'>Revenue: {movieData.revenue}</p>
-              <p className='runtime'>Runtime: {movieData.runtime}</p>
+              <h2>{title}</h2>
+              <h3 className='tagline'>{tagline}</h3>
+              <p className='overview'>{overview}</p>
+              <p className='release'>Released {release_date}</p>
+              <p className='money'>Budget: {budget}</p>
+              <p className='money'>Revenue: {revenue}</p>
+              <p className='runtime'>Runtime: {runtime}</p>
               <div className='genreBox'>
-                {genres}
+                {genreList}
               </div>
             </section>
           </div>
