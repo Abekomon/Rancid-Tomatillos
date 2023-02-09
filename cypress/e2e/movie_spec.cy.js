@@ -16,6 +16,11 @@ describe('Individual movie flows', () => {
     cy.get('[data-cy="genrelist/436270"]').should('be.visible')
   })
 
+  it('User should be able to navigate back to the home page', () => {
+    cy.get('[data-cy="home"]').click()
+    cy.get('[data-cy="436270"]').should('be.visible')
+  })
+
   it('User should see an error if server is not responding', () => {
     cy.visit('http://localhost:3000/436270')
     cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/436270', { statusCode: 500 })

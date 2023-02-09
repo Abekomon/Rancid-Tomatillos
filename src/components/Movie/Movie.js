@@ -39,7 +39,7 @@ class Movie extends Component {
             
             <img src={poster_path} alt={title} data-cy={`movie/${id}`}/>
             
-            <section className='info'>
+            <section className='info' data-cy={`info/${id}`}>
               <h2>{title}</h2>
               <h3 className='tagline' data-cy={`tagline/${id}`}>{tagline}</h3>
               <p className='overview' data-cy={`overview/${id}`}>{overview}</p>

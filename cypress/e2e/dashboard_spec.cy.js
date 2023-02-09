@@ -20,7 +20,7 @@ describe('Dashboard flows', () => {
   it('Should change views when clicking on a movie, and show additional details', () => {
     cy.get('[data-cy="436270"]').click()
     cy.get('[data-cy="movie/436270"]').should('be.visible')
-    cy.get('.info').should('be.visible')
+    cy.get('[data-cy="info/436270"]').should('be.visible')
   })
 })
 
