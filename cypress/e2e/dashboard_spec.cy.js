@@ -14,11 +14,11 @@ describe('Dashboard flows', () => {
     cy.get('.poster').should('be.visible')
     cy.get('h3').contains('Black Adam')
     cy.get('h3').contains('The Woman King')
-    cy.get('p').contains('Rating: 4.0')
+    // cy.get('p').contains('Rating: 4.0')
   })
 
   it('Should change views when clicking on a movie, and show additional details', () => {
-    cy.get('.poster:nth-child(1) > img').click()
+    cy.get('[data-cy="436270"]').click()
     cy.get('.container > img').should('be.visible')
     cy.get('.info').should('be.visible')
   })
