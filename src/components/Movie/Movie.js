@@ -14,7 +14,7 @@ class Movie extends Component {
   }
 
   componentDidMount() {
-    fetchData(`movies/${this.props}`)
+    fetchData(`movies/${this.props.movieID}`)
     .then(data => {
       this.setState({movieData: data.movie, isLoading: false, response: true})
     }).catch(() => {this.setState({response: false, isLoading: false})})
