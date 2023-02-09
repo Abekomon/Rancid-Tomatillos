@@ -18,9 +18,9 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetchData('stuff').then(data => {
+    fetchData('movies').then(data => {
       this.setState({ movieData: data.movies, isLoading: false, response: true })
-    }).catch(error => {this.setState({response: false, isLoading: false})})
+    }).catch(() => {this.setState({response: false, isLoading: false})})
   }
 
   render() {

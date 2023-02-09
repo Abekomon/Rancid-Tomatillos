@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import fetchData from '../../apiCalls'
 import './Movie.css'
 
@@ -8,19 +8,24 @@ class Movie extends Component {
     super(props)
     this.state = {
       movieData: null,
-      isLoading: true
+      isLoading: true,
+      response: null
     }
   }
 
   componentDidMount() {
     fetchData(`movies/${this.props.movieID}`)
-    .then(data => this.setState({movieData: data.movie, isLoading: false}))
+    .then(data => {
+      this.setState({movieData: data.movie, isLoading: false, response: true})
+    }).catch(() => {this.setState({response: false, isLoading: false})})
   }
 
   render() {
     const movieData = this.state.movieData
     if(this.state.isLoading){
       return <div className="loader"></div>
+    } else if (!this.state.response) {
+      return <Redirect to="/error/404"/>
     } else {
       const genres = movieData.genres.map(genre => {
         return (
