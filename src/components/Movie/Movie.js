@@ -37,7 +37,7 @@ class Movie extends Component {
         <div className='main-container'>
           <div className='container'>
             
-            <img src={movieData.poster_path} alt={movieData.title}/>
+            <img src={movieData.poster_path} alt={movieData.title} data-cy={movieData.id}/>
             
             <section className='info'>
               <h2>{movieData.title}</h2>

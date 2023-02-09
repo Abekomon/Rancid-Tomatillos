@@ -27,11 +27,11 @@ describe('Dashboard flows', () => {
 it('User should see an error page if server is not working', () => {
   cy.visit('http://localhost:3000/')
   cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', { statusCode: 500 })
-  cy.get('[data-cy="error"]').should('be.visible')
+  cy.get('[data-cy="error-500"]').should('be.visible')
 })
 
 it('User should see an error page if server is not working', () => {
   cy.visit('http://localhost:3000/')
   cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', { statusCode: 404 })
-  cy.get('[data-cy="error"]').should('be.visible')
+  cy.get('[data-cy="error-400"]').should('be.visible')
 })
