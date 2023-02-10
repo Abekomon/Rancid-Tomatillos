@@ -9,7 +9,8 @@ class Movie extends Component {
     this.state = {
       movieData: {},
       isLoading: true,
-      response: false
+      response: false,
+      statusCode: 200
     }
   }
 
@@ -17,16 +18,16 @@ class Movie extends Component {
     fetchMovieData(`movies/${this.props.movieID}`)
     .then(data => {
       this.setState({movieData: data.movie, isLoading: false, response: true})
-    }).catch(() => {this.setState({response: false, isLoading: false})})
+    }).catch((error) => {this.setState({response: false, isLoading: false, statusCode: error.message})})
   }
 
   render() {
     if(this.state.isLoading){
       return <div className="loader"></div>
     } else if (!this.state.response) {
-      return <Redirect to="/error/404"/>
+      return <Redirect to={`/error/${this.state.statusCode}`}/>
     } else {
-      const { title, poster_path, release_date, overview, genres, budget, revenue, runtime, tagline } = this.state.movieData
+      const { id, title, poster_path, release_date, overview, genres, budget, revenue, runtime, tagline } = this.state.movieData
       const genreList = genres.map(genre => {
         return (
           <p className='genre' key={genre}>{genre}</p>
@@ -36,17 +37,17 @@ class Movie extends Component {
         <div className='main-container'>
           <div className='container'>
             
-            <img src={poster_path} alt={title}/>
+            <img src={poster_path} alt={title} data-cy={`movie/${id}`}/>
             
-            <section className='info'>
+            <section className='info' data-cy={`info/${id}`}>
               <h2>{title}</h2>
-              <h3 className='tagline'>{tagline}</h3>
-              <p className='overview'>{overview}</p>
-              <p className='release'>Released {release_date}</p>
-              <p className='money'>Budget: {budget}</p>
-              <p className='money'>Revenue: {revenue}</p>
-              <p className='runtime'>Runtime: {runtime}</p>
-              <div className='genreBox'>
+              <h3 className='tagline' data-cy={`tagline/${id}`}>{tagline}</h3>
+              <p className='overview' data-cy={`overview/${id}`}>{overview}</p>
+              <p className='release' data-cy={`release_date/${id}`}>Released {release_date}</p>
+              <p className='money' data-cy={`budget/${id}`}>Budget: {budget}</p>
+              <p className='money' data-cy={`revenue/${id}`}>Revenue: {revenue}</p>
+              <p className='runtime' data-cy={`runtime/${id}`}>Runtime: {runtime}</p>
+              <div className='genreBox' data-cy={`genrelist/${id}`}>
                 {genreList}
               </div>
             </section>

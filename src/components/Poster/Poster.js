@@ -3,7 +3,7 @@ import './Poster.css';
 
 const Poster = ({id, title, poster, rating}) => {
   return (
-    <div className='poster' id={id} data-cy={id}>
+    <div className='poster' id={id}>
       <img src={poster} alt={title}/>
       <footer>
         <h3>{title}</h3>
