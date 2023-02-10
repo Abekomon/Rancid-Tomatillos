@@ -8,10 +8,19 @@ class Searchbar extends Component {
     }
   }
 
+  handleInput = (e) => {
+    this.setState({ [e.target.name]: e.target.value })
+  }
+
   render(props) {
     return (
       <form className="search-bar">
-        <input type="search" name="searchValue" placeholder="Search by movie title" />
+        <input 
+          type="search" 
+          name="searchValue" 
+          placeholder="Search by movie title"
+          onChange={(e) => this.handleInput(e)}
+        />
         <button onClick={(e) => props.updateSearch(e)}>Search</button>
       </form>
     )
