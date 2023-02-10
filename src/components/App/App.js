@@ -15,30 +15,30 @@ class App extends Component {
       movieData: [],
       response: false,
       statusCode: 200,
-      allMovies: []
+      movieIds: []
     }
   }
 
 
   componentDidMount() {
     fetchMovieData('movies').then(data => {
-      this.setState({ movieData: data.movies, isLoading: false, response: true }, function() {this.fetchAllMovies()})
+      this.setState({ movieData: data.movies, isLoading: false, response: true }, () => this.getMovieIds())
     }).catch((error) => {this.setState({response: false, isLoading: false, statusCode: error.message})})
   }
 
-  fetchAllMovies = () => {
+  getMovieIds = () => {
     const movies = this.state.movieData
-    return movies.map(movie => {
-      fetchMovieData(`movies/${movie.id}`)
-      .then(data => this.setState({ allMovies: [...this.state.allMovies, data]}))
+    const movieIds = movies.map(movie => {
+      return movie.id
     })
+    this.setState({movieIds: movieIds})
   }
 
   render() {
-    return (
+    return (  
 
       <main>
-        <Header />
+        <Header allMovies={this.state.allMovies}/>
 
         <Route exact path="/error/:code" render={ ({match}) => 
           <Errors statusCode={match.params.code}/>
