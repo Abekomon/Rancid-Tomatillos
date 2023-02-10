@@ -14,18 +14,29 @@ class App extends Component {
       isLoading: true,
       movieData: [],
       response: false,
-      statusCode: 200
+      statusCode: 200,
+      allMovies: []
     }
   }
 
+
   componentDidMount() {
     fetchMovieData('movies').then(data => {
-      this.setState({ movieData: data.movies, isLoading: false, response: true })
+      this.setState({ movieData: data.movies, isLoading: false, response: true }, function() {this.fetchAllMovies()})
     }).catch((error) => {this.setState({response: false, isLoading: false, statusCode: error.message})})
+  }
+
+  fetchAllMovies = () => {
+    const movies = this.state.movieData
+    return movies.map(movie => {
+      fetchMovieData(`movies/${movie.id}`)
+      .then(data => this.setState({ allMovies: [...this.state.allMovies, data]}))
+    })
   }
 
   render() {
     return (
+
       <main>
         <Header />
 
