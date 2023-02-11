@@ -21,13 +21,12 @@ class App extends Component {
     }
   }
 
-  updateSearch = (event, value) => {
-    event.preventDefault()
+  updateSearch = (value) => {
     if(value) {
       const filteredMovies = this.state.movieData.filter(movie => movie.title.toLowerCase().includes(value.toLowerCase()))
       this.setState({ searchData: filteredMovies, useSearch: true })
     } else {
-      this.setState({ useSearch: false })
+      this.setState({ searchData: [], useSearch: false })
     }
   }
 
@@ -56,7 +55,7 @@ class App extends Component {
         } />
 
         <Route exact path="/:movieID" render={({match}) => 
-            <Movie movieID={match.params.movieID}/> 
+          <Movie movieID={match.params.movieID}/> 
         } />
       </main>
     )
