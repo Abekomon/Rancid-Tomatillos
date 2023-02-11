@@ -31,6 +31,8 @@ class App extends Component {
     const movieIds = movies.map(movie => {
       return movie.id
     })
+    console.log('movieData', this.state.movieData)
+    console.log('movie IDS', movieIds)
     this.setState({movieIds: movieIds})
   }
 
@@ -38,7 +40,7 @@ class App extends Component {
     return (  
 
       <main>
-        <Header allMovies={this.state.allMovies}/>
+        <Header movieIds={this.state.movieIds}/>
 
         <Route exact path="/error/:code" render={ ({match}) => 
           <Errors statusCode={match.params.code}/>

@@ -6,6 +6,7 @@
   text-align: center;
   padding: 3% 0% 3% 0%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
@@ -15,4 +16,10 @@
   font-size: 3em;
   width: 90%;
   border-radius: 10px;
+}
+
+.nav-bar {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
 }
