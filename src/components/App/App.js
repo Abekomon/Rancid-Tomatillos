@@ -6,15 +6,27 @@ import PosterGrid from '../PosterGrid/PosterGrid'
 import Movie from '../Movie/Movie'
 import { Redirect, Route } from 'react-router-dom'
 import Errors from '../Errors/Errors'
+import Searchbar from '../Searchbar/Searchbar'
 
 class App extends Component {
   constructor() {
     super() 
     this.state = {
       isLoading: true,
+      useSearch: false,
       movieData: [],
+      searchData: [],
       response: false,
       statusCode: 200
+    }
+  }
+
+  updateSearch = (value) => {
+    if(value) {
+      const filteredMovies = this.state.movieData.filter(movie => movie.title.toLowerCase().includes(value.toLowerCase()))
+      this.setState({ searchData: filteredMovies, useSearch: true })
+    } else {
+      this.setState({ searchData: [], useSearch: false })
     }
   }
 
@@ -33,17 +45,18 @@ class App extends Component {
           <Errors statusCode={match.params.code}/>
         } />
 
-        <Route exact path='/' render={ () => 
+        <Route exact path="/" render={ () => 
           this.state.isLoading ? <div className="loader"></div> : 
           !this.state.response ? <Redirect to={`/error/${this.state.statusCode}`} /> :
-          <PosterGrid movies={this.state.movieData}/> } 
-          />
+          <>
+            <Searchbar updateSearch={this.updateSearch} />
+            <PosterGrid movies={this.state.useSearch ? this.state.searchData : this.state.movieData}/>  
+          </>
+        } />
 
-        
         <Route exact path="/:movieID" render={({match}) => 
-            <Movie movieID={match.params.movieID}/> 
-          }
-        />
+          <Movie movieID={match.params.movieID}/> 
+        } />
       </main>
     )
   }
