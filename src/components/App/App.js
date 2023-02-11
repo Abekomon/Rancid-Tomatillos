@@ -24,7 +24,7 @@ class App extends Component {
   updateSearch = (event, value) => {
     event.preventDefault()
     if(value) {
-      const filteredMovies = this.state.movieData.filter(movie => movie.title.includes(value))
+      const filteredMovies = this.state.movieData.filter(movie => movie.title.toLowerCase().includes(value.toLowerCase()))
       this.setState({ searchData: filteredMovies, useSearch: true })
     } else {
       this.setState({ useSearch: false })
