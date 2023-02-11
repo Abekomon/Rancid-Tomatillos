@@ -12,7 +12,7 @@ class Searchbar extends Component {
     this.setState({ [e.target.name]: e.target.value })
   }
 
-  render(props) {
+  render() {
     return (
       <form className="search-bar">
         <input 
@@ -21,7 +21,7 @@ class Searchbar extends Component {
           placeholder="Search by movie title"
           onChange={(event) => this.handleInput(event)}
         />
-        <button onClick={(event) => props.updateSearch(event, this.state.searchValue)}>Search</button>
+        <button onClick={(event) => this.props.updateSearch(event, this.state.searchValue)}>Search</button>
       </form>
     )
   }

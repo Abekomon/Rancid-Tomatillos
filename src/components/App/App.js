@@ -13,7 +13,9 @@ class App extends Component {
     super() 
     this.state = {
       isLoading: true,
+      useSearch: false,
       movieData: [],
+      searchData: [],
       response: false,
       statusCode: 200
     }
@@ -21,8 +23,12 @@ class App extends Component {
 
   updateSearch = (event, value) => {
     event.preventDefault()
-    const filteredMovies = this.state.movieData.filter(movie => movie.title.includes(value))
-    this.setState({ movieData: filteredMovies })
+    if(value) {
+      const filteredMovies = this.state.movieData.filter(movie => movie.title.includes(value))
+      this.setState({ searchData: filteredMovies, useSearch: true })
+    } else {
+      this.setState({ useSearch: false })
+    }
   }
 
   componentDidMount() {
@@ -45,7 +51,7 @@ class App extends Component {
           !this.state.response ? <Redirect to={`/error/${this.state.statusCode}`} /> :
           <>
             <Searchbar updateSearch={this.updateSearch} />
-            <PosterGrid movies={this.state.movieData}/>  
+            <PosterGrid movies={this.state.useSearch ? this.state.searchData : this.state.movieData}/>  
           </>
         } />
 
