@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import "./Searchbar.css"
 
 class Searchbar extends Component {
   constructor(props) {
@@ -15,14 +16,15 @@ class Searchbar extends Component {
 
   render() {
     return (
-      <form className="search-bar">
+      <form className="search">
         <input 
+          className="search-bar"
           type="search" 
           name="searchValue" 
           placeholder="Search by movie title"
           onChange={(event) => this.handleInput(event)}
         />
-        <button onClick={(event) => this.props.updateSearch(event, this.state.searchValue)}>Search</button>
+        <button className="search-button" onClick={(event) => this.props.updateSearch(event, this.state.searchValue)}>Search</button>
       </form>
     )
   }

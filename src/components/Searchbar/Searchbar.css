@@ -1,0 +1,25 @@
+.search {
+  width: 100%;
+  height: 40px;
+  margin: 1% 0 0;
+  text-align: center;
+}
+
+.search-bar, .search-button {
+  height: 100%;
+  box-shadow: 2px 2px 15px rgb(29, 53, 87);
+  border-radius: 10px;
+  border: 1px solid grey;
+  font-size: 1em;
+}
+
+.search-bar {
+  width: 40%;
+  border: none;
+  padding: 0.5%;
+}
+
+.search-button {
+  width: 5em;
+  margin-left: 0.25%;
+}
