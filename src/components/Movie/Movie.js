@@ -27,7 +27,7 @@ class Movie extends Component {
     } else if (!this.state.response) {
       return <Redirect to={`/error/${this.state.statusCode}`}/>
     } else {
-      const { id, title, poster_path, release_date, overview, genres, budget, revenue, runtime, tagline } = this.state.movieData
+      const { id, title, poster_path, release_date, overview, genres, budget, revenue, runtime, tagline, average_rating } = this.state.movieData
       const genreList = genres.map(genre => {
         return (
           <p className='genre' key={genre}>{genre}</p>
@@ -43,10 +43,11 @@ class Movie extends Component {
               <h2>{title}</h2>
               <h3 className='tagline' data-cy={`tagline/${id}`}>{tagline}</h3>
               <p className='overview' data-cy={`overview/${id}`}>{overview}</p>
+              <p>Average RT Rating: {average_rating}</p>
               <p className='release' data-cy={`release_date/${id}`}>Released {release_date}</p>
               <p className='money' data-cy={`budget/${id}`}>Budget: {budget}</p>
               <p className='money' data-cy={`revenue/${id}`}>Revenue: {revenue}</p>
-              <p className='runtime' data-cy={`runtime/${id}`}>Runtime: {runtime}</p>
+              <p className='runtime' data-cy={`runtime/${id}`}>Runtime: {runtime} minutes</p>
               <div className='genreBox' data-cy={`genrelist/${id}`}>
                 {genreList}
               </div>
