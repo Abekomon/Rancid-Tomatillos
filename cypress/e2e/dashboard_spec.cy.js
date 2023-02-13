@@ -30,6 +30,7 @@ describe('Dashboard flows', () => {
     cy.get('[data-cy="search-bar"]').type('Black')
     cy.get('[data-cy="436270"]').should('be.visible')
     cy.get('[data-cy="724495"]').should('not.exist')
+    cy.get('[data-cy="search-bar"]').clear()
+    cy.get('[data-cy="724495"]').should('be.visible')
   })
-
 })
