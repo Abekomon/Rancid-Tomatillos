@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import fetchMovieData from '../../apiCalls'
 import './Movie.css'
+import dayjs from 'dayjs'
 
 class Movie extends Component {
   constructor(props) {
@@ -43,8 +44,8 @@ class Movie extends Component {
               <h2>{title}</h2>
               <h3 className='tagline' data-cy={`tagline/${id}`}>{tagline}</h3>
               <p className='overview' data-cy={`overview/${id}`}>{overview}</p>
-              <p>Average RT Rating: {average_rating}/10</p>
-              <p className='release' data-cy={`release_date/${id}`}>Released {release_date}</p>
+              <p>Average Rating: {average_rating}/10</p>
+              <p className='release' data-cy={`release_date/${id}`}>Released: {dayjs(release_date).format('MMM DD, YYYY')} </p>
               <p className='money' data-cy={`budget/${id}`}>Budget: { budget ? `$${budget.toLocaleString('en-US')}` : 'N/A' } </p>
               <p className='money' data-cy={`revenue/${id}`}>Revenue: { revenue ? `$${revenue.toLocaleString('en-US')}` : 'N/A' }</p>
               <p className='runtime' data-cy={`runtime/${id}`}>Runtime: {runtime} minutes</p>
