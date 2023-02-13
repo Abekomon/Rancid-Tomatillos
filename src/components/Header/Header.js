@@ -4,7 +4,7 @@ import './Header.css'
 const Header = () => {
   return (
     <header className="header">
-      <h1>Rancid Tomatillos</h1>
+      <h1 data-cy="logo">Rancid Tomatillos</h1>
     </header>
   )
 }

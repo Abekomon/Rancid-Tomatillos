@@ -6,7 +6,7 @@ describe('Dashboard flows', () => {
   })
   
   it('User should see the app title on page load', () => {
-    cy.get('h1').contains('Rancid Tomatillos')
+    cy.get('[data-cy="logo"]').contains('Rancid Tomatillos')
   })
 
   it('User should see movies on page load', () => {
