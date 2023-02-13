@@ -1,7 +1,5 @@
 import React from 'react'
 import './Header.css'
-import logo from '../../resources/tomatillo.png'
-
 
 const Header = () => {
   return (
