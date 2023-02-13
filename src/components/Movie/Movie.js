@@ -45,8 +45,8 @@ class Movie extends Component {
               <p className='overview' data-cy={`overview/${id}`}>{overview}</p>
               <p>Average RT Rating: {average_rating}</p>
               <p className='release' data-cy={`release_date/${id}`}>Released {release_date}</p>
-              <p className='money' data-cy={`budget/${id}`}>Budget: {budget}</p>
-              <p className='money' data-cy={`revenue/${id}`}>Revenue: {revenue}</p>
+              <p className='money' data-cy={`budget/${id}`}>Budget: { budget ? budget : 'N/A' } </p>
+              <p className='money' data-cy={`revenue/${id}`}>Revenue: { revenue ? revenue : 'N/A' }</p>
               <p className='runtime' data-cy={`runtime/${id}`}>Runtime: {runtime} minutes</p>
               <div className='genreBox' data-cy={`genrelist/${id}`}>
                 {genreList}
