@@ -6,29 +6,28 @@ class Header extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      allMovies: []
+      allMovies: [],
+      isLoading: true
     }
-  }
+  }       
 
   componentDidMount() {
-      return Promise.allSettled(this.props.movieIds.map(id => {
-        return fetchMovieData(`movies/${id}`)
+    console.log('header.js: componentDidMount')
+      Promise.all(this.props.movieIds.map(id => {
+        console.log('inside PromiseAll', id)
+        return fetchMovieData(`movies/${id}`)  
       }))
-      .then(data => console.log(data))
-      // .then(data => {this.setState({allMovies: data})})
-    }
+      .then(movies => {
+        const mappedMovies = movies.map((movie) => {
+          return movie.movie
+        })
+        this.setState({ allMovies: mappedMovies})
+      })
+      .catch((error) => {console.log(error)})        
+    }   
 
-  // getAllMovies = () => {
-  //   return this.props.movieIds.map(id => {
-  //     fetchMovieData(`movies/${id}`)
-  //     .then(data => this.setState({allMovies: [...this.state.allMovies, data]}))
-  //   })
-  // }
-
-  // sortMovies = () => {
-
-  // }
   render () { 
+    
     return (
     <header className="header">
       <h1>Rancid Tomatillos</h1>

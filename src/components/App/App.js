@@ -21,6 +21,7 @@ class App extends Component {
 
 
   componentDidMount() {
+    console.log('app.js: componentDidMount')
     fetchMovieData('movies').then(data => {
       this.setState({ movieData: data.movies, isLoading: false, response: true }, () => this.getMovieIds())
     }).catch((error) => {this.setState({response: false, isLoading: false, statusCode: error.message})})
@@ -31,8 +32,6 @@ class App extends Component {
     const movieIds = movies.map(movie => {
       return movie.id
     })
-    console.log('movieData', this.state.movieData)
-    console.log('movie IDS', movieIds)
     this.setState({movieIds: movieIds})
   }
 
@@ -40,8 +39,7 @@ class App extends Component {
     return (  
 
       <main>
-        <Header movieIds={this.state.movieIds}/>
-
+      
         <Route exact path="/error/:code" render={ ({match}) => 
           <Errors statusCode={match.params.code}/>
         } />
@@ -49,18 +47,27 @@ class App extends Component {
         <Route exact path='/' render={ () => 
           this.state.isLoading ? <div className="loader"></div> : 
           !this.state.response ? <Redirect to={`/error/${this.state.statusCode}`} /> :
-          <PosterGrid movies={this.state.movieData}/> } 
-          />
-
-        
+          <>
+            <Header movieIds={this.state.movieIds}/>
+            <PosterGrid movies={this.state.movieData}/>
+          </>
+          
+          } 
+        />
         <Route exact path="/:movieID" render={({match}) => 
+          <>
+            <Header movieIds={this.state.movieIds}/>
             <Movie movieID={match.params.movieID}/> 
+          </>
+            
           }
         />
       </main>
     )
   }
 }
+
+
 
 export default App;
 
