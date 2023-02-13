@@ -11,8 +11,10 @@
 }
 
 .header h1 {
+  font-family: 'Bangers', cursive;
+  letter-spacing: 8px;
   margin: 0;
-  font-size: 3em;
+  font-size: 6em;
   width: 90%;
   border-radius: 10px;
 }

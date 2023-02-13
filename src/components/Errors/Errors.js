@@ -5,12 +5,12 @@ import { Link } from 'react-router-dom'
 const Errors = (props) => {
   if (props.statusCode >= 400 && props.statusCode <= 499) {
     return (
-      <>
+      <div className="error-container">
         <h3 className="error-message" data-cy="error-400">Whoops! I'm not sure where that is.  Try going back home.</h3>
         <Link to="/">
           <button className="home-button" data-cy="home">HOME</button>
         </Link>
-      </>
+      </div>
     )
   } else if (props.statusCode >= 500) {
     return (
