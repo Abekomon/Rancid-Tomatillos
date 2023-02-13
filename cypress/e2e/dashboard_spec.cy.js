@@ -24,6 +24,13 @@ describe('Dashboard flows', () => {
   })
 
   it('User should see a searchbar on page load, but not when looking at an individual moive', () => {
-    
+    cy.get('[data-cy="search-bar"]').should('be.visible')
+    cy.get('[data-cy="436270"]').click()
+    cy.get('[data-cy="search-bar"]').should('not.exist')
   })
+
+  it('User should be able to use the search bar to filter through movies', () => {
+    cy.get()
+  })
+
 })
