@@ -7,6 +7,7 @@ import Movie from '../Movie/Movie'
 import { Redirect, Route } from 'react-router-dom'
 import Errors from '../Errors/Errors'
 import Searchbar from '../Searchbar/Searchbar'
+import logo from '../../resources/tomatillo.png'
 
 class App extends Component {
   constructor() {
@@ -45,7 +46,7 @@ class App extends Component {
         } />
 
         <Route exact path="/" render={ () => 
-          this.state.isLoading ? <div className="loader"></div> : 
+          this.state.isLoading ? <img className="loader" src={logo} /> : 
           !this.state.response ? <Redirect to={`/error/${this.state.statusCode}`} /> :
           <>
             <Searchbar updateSearch={this.updateSearch} />

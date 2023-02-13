@@ -3,6 +3,7 @@ import { Link, Redirect } from 'react-router-dom'
 import fetchMovieData from '../../apiCalls'
 import './Movie.css'
 import dayjs from 'dayjs'
+import logo from '../../resources/tomatillo.png'
 
 class Movie extends Component {
   constructor(props) {
@@ -24,7 +25,7 @@ class Movie extends Component {
 
   render() {
     if(this.state.isLoading){
-      return <div className="loader"></div>
+      return <img className="loader" src={logo} />
     } else if (!this.state.response) {
       return <Redirect to={`/error/${this.state.statusCode}`}/>
     } else {
