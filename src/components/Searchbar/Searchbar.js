@@ -20,7 +20,7 @@ class Searchbar extends Component {
 
   render() {
     return (
-      <form className="search">
+      <form className="search" onSubmit={(event) => event.preventDefault()}>
         <input 
           className="search-bar"
           data-cy="search-bar"

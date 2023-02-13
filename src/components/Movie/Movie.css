@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 70vh;
+  min-height: 70vh;
   justify-content: center;
   align-items: center;
 }
@@ -17,7 +17,7 @@
 }
 
 .container img {
-  width: 30%;
+  width: 40%;
   height: 90%;
   border-radius: 10px;
   box-shadow: 7px 7px 15px rgb(29, 53, 87);
@@ -25,8 +25,7 @@
 
 .info {
   margin: 0;
-  width: 40%;
-  height: 82%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -54,6 +53,7 @@ h2, p {
   height: 2em;
   width: 15em;
   border-radius: 10px;
+  margin: 15% 0;
   background-color: transparent;
   border: 1px solid rgb(29, 53, 87);
 }
@@ -68,6 +68,7 @@ button:hover {
   display: flex;
   flex-direction: row;
   gap: 2%;
+  flex-wrap: wrap;
 }
 
 .genre {
@@ -75,4 +76,50 @@ button:hover {
   background-color: white;
   color:rgb(29, 53, 87);
   border-radius: 5px;
+  border: 1px solid rgb(29, 53, 87);
+}
+
+@media screen and (max-width: 1000px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+  }
+
+  .info {
+    width: 80%;
+    margin-top: 5%;
+    border-radius: 20px;
+  }
+
+  .info h2 {
+    font-size: 2.5em;
+  }
+
+  .container img {
+    width: 55%;
+  }
+
+  .overview {
+    margin-bottom: 3%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .container {
+    width: 100%
+  }
+
+  .info {
+    width: 90%;
+  }
+
+  .info h2 {
+    font-size: 2em;
+  }
+
+  .container img {
+    width: 65%;
+  }
+  
 }
