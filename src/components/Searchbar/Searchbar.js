@@ -23,6 +23,7 @@ class Searchbar extends Component {
       <form className="search">
         <input 
           className="search-bar"
+          data-cy="search-bar"
           type="search" 
           name="searchValue"
           value={this.state.searchValue}

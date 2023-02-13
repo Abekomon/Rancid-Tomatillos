@@ -13,27 +13,26 @@ class App extends Component {
     super() 
     this.state = {
       isLoading: true,
-      useSearch: false,
       movieData: [],
-      searchData: [],
+      displayData: [],
       response: false,
       statusCode: 200
     }
   }
 
+  componentDidMount() {
+    fetchMovieData('movies').then(data => {
+      this.setState({ movieData: data.movies, displayData: data.movies, isLoading: false, response: true })
+    }).catch((error) => {this.setState({response: false, isLoading: false, statusCode: error.message})})
+  }
+
   updateSearch = (value) => {
     if(value) {
       const filteredMovies = this.state.movieData.filter(movie => movie.title.toLowerCase().includes(value.toLowerCase()))
-      this.setState({ searchData: filteredMovies, useSearch: true })
+      this.setState({ displayData: filteredMovies })
     } else {
-      this.setState({ searchData: [], useSearch: false })
+      this.setState({ displayData: this.state.movieData })
     }
-  }
-
-  componentDidMount() {
-    fetchMovieData('movies').then(data => {
-      this.setState({ movieData: data.movies, isLoading: false, response: true })
-    }).catch((error) => {this.setState({response: false, isLoading: false, statusCode: error.message})})
   }
 
   render() {
@@ -50,7 +49,7 @@ class App extends Component {
           !this.state.response ? <Redirect to={`/error/${this.state.statusCode}`} /> :
           <>
             <Searchbar updateSearch={this.updateSearch} />
-            <PosterGrid movies={this.state.useSearch ? this.state.searchData : this.state.movieData}/>  
+            <PosterGrid movies={this.state.displayData}/>  
           </>
         } />
 
