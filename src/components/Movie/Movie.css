@@ -99,6 +99,10 @@ button:hover {
   .container img {
     width: 55%;
   }
+
+  .overview {
+    margin-bottom: 3%;
+  }
 }
 
 @media screen and (max-width: 500px) {
