@@ -33,7 +33,7 @@
 
 ## Developers
 - [Natalie Kinsaul](https://github.com/nkinsaul)
-- [Max Lange](http://github.com/abekemon)
+- [Max Lange](https://github.com/Abekomon)
 
 ## Goals
 - Become more fluent with React
