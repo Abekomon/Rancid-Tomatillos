@@ -21,8 +21,8 @@
   - Budget/Revenue
 
 ## Set-Up Instructions
-1. Copy the following SSH link: `git@github.com:nkinsaul/TravelTracker.git`
-2. After determining one's desired installation location, open one's command line interpreter and run the following text into one's command line interpreter: `git clone git@github.com:nkinsaul/TravelTracker.git`
+1. Copy the following SSH link: `git@github.com:Abekomon/Rancid-Tomatillos.git`
+2. After determining one's desired installation location, open command line interpreter and run the following code: `git clone git@github.com:nkinsaul/TravelTracker.git`
 3. Install NPM packages:
     1. Run `npm install` to install project dependencies.
 4. Run `npm start` to start running the local server
@@ -45,7 +45,9 @@
 *More information can be found on [the official project specifications document](https://frontend.turing.edu/projects/module-3/rancid-tomatillos-v3.html).*
 
 ## Demonstration
-The video below demonstrates a user navigating the Rancid Tomatillos application . 
+The video below demonstrates a user navigating the Rancid Tomatillos application
+
+https://user-images.githubusercontent.com/67208858/218611567-7c84f87c-7a3f-4a3a-b250-053403ae1429.mp4
 
 ## Technologies Used
 - React
@@ -69,6 +71,7 @@ The video below demonstrates a user navigating the Rancid Tomatillos application
 - Had plenty of time to polish our project
 
 
+## Notes
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 
