@@ -20,7 +20,6 @@ class PosterGrid extends Component {
             id={movie.id}
             title={movie.title} 
             poster={movie.poster_path} 
-            rating={movie.average_rating} 
           />
         </Link>
       )

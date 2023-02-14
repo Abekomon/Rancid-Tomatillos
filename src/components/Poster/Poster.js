@@ -1,7 +1,7 @@
 import React from "react";
 import './Poster.css';
 
-const Poster = ({id, title, poster, rating}) => {
+const Poster = ({id, title, poster}) => {
   return (
     <div className='poster' id={id}>
       <img src={poster} alt={title}/>

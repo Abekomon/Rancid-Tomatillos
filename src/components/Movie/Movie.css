@@ -46,7 +46,11 @@ h2, p {
 }
 
 .info h3 {
-  margin-top: 0;
+  font-size: 2em;
+}
+
+.info p {
+  font-size: 1.5em;
 }
 
 .home-button {
@@ -77,6 +81,16 @@ button:hover {
   color:rgb(29, 53, 87);
   border-radius: 5px;
   border: 1px solid rgb(29, 53, 87);
+}
+
+@media screen and (max-width: 1500px) {
+  .info p {
+    font-size: 1em;
+  }
+
+  .info h3 {
+    font-size: 1.5em;
+  }
 }
 
 @media screen and (max-width: 1000px) {
